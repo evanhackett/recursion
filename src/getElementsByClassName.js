@@ -4,10 +4,10 @@
 // };
 
 // But instead we're going to implement it from scratch:
-var getElementsByClassName = function(className, node
+var getElementsByClassName = function(className, node, elements
 ){
   // your code here
-  var elements = [];
+  if (arguments[2] === undefined) elements = [];
 
   if (node === undefined) {
     node = document.body;
@@ -21,7 +21,7 @@ var getElementsByClassName = function(className, node
       if (children[i].classList.contains(className)) elements.push(children[i]);
     }
 
-    if (children[i].hasChildNodes()) getElementsByClassName(className, children[i]);
+    if (children[i].hasChildNodes()) getElementsByClassName(className, children[i], elements);
   }
 
   return elements;
